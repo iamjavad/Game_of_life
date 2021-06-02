@@ -41,9 +41,9 @@ int main()
 				for (int y = 0; y < h; y++)
 						world[y][x] = rand() < RAND_MAX / 10 ? 1 : 0;
 		
-		draw(world, w, h);
-		evolution(world, w, h);
-		draw(world, w, h);
+		while (1) {
+				draw(world, w, h);
+				evolution(world, w, h);
+		}
 		return 0;
-
 }
