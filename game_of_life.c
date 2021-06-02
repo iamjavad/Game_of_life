@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
 
 void draw(void *u, int w, int h)
 {
@@ -7,7 +9,7 @@ void draw(void *u, int w, int h)
 		printf("\033[H");
 		for (int y = 0; y < h; y++){
 				for (int x = 0; x < w; x++)
-							printf(world[y][x]? "+" : ".");
+							printf(world[y][x]? "*" : " ");
 				printf("\n");
 		}
 }
@@ -26,10 +28,10 @@ void evolution(void *u, int w, int h)
 						if (world[y][x]) lives--;
 						
 						new[y][x] = (lives==3 || (lives==2 && world[y][x]));
-						}	
+				}	
 		for (int y = 0; y < h; y++)
 				for (int x = 0; x < w; x++)
-						world[y][x];
+						world[y][x] = new[y][x];
 }
 
 int main()
@@ -44,6 +46,7 @@ int main()
 		while (1) {
 				draw(world, w, h);
 				evolution(world, w, h);
+				usleep(1000000);
 		}
 		return 0;
 }
