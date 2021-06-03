@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-
+ 
 void draw(void *u, int w, int h)
 {
 		char (*world)[w] = u;
